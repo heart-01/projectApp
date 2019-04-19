@@ -3,38 +3,47 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { AddPage } from './../pages/add/add';
+import { SearchPage } from './../pages/search/search';
+import { ListPage } from './../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpModule } from '@angular/http'; // เรียกใช้ HttpModule สำหรับ get ค่าจาก Http
+import { HttpClientModule } from '@angular/common/http'; // import เพื่อใช้งาน Http บนเครื่อง Client
+import { IonicStorageModule } from '@ionic/storage'; // import local storage
+import { Toast } from '@ionic-native/toast'; // import alert toast
+
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    ListPage,
+    SearchPage,
+    AddPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    HttpClientModule,
+    IonicStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    ListPage,
+    SearchPage,
+    AddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Toast
   ]
 })
 export class AppModule {}
