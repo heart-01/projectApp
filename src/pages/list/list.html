@@ -1,15 +1,36 @@
-<!--
-  Generated template for the ListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>list</ion-title>
+    <ion-title>รายชื่อห้อง</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addData()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <h3>รายชื่อห้อง</h3>
+  <ion-list>
+    <ion-item-sliding *ngFor="let room of dataRoom; let i=index">
+      <ion-item nopadding>
+        <p>
+          {{room.nameRoom}}
+        </p>
+        <button ion-button clear item-end  (click)="viewRoom(room.IDroom)" >View</button>
+      </ion-item>
+
+      <ion-item-options side="right"> <!-- เมื่อเราสไลด์ไปทางขวา -->
+        <button ion-button color="primary" (click)="editData(room.IDroom)">
+          <ion-icon name="paper"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="deleteData(room.IDroom)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

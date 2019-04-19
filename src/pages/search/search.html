@@ -1,15 +1,18 @@
-<!--
-  Generated template for the SearchPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>search</ion-title>
+    <ion-title>
+        ค้นหารายชื่อนักศึกษา
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+    <form (ngSubmit)="searchData()">
+      <ion-item>
+        <ion-label floating>ใส่รหัสนักศึกษา</ion-label>
+        <ion-input type="text" name="IDstudent" [(ngModel)]="IDstudent" required ></ion-input>
+      </ion-item>
+      <br/>
+      <button ion-button type="submit" block>ค้นหา</button>
+    </form>
 </ion-content>
