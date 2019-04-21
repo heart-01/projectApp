@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>สมัครสมาชิก</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="formRegister" (ngSubmit)="addData()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>รหัสนักศึกษา</ion-label>  
+        <ion-input type="number" pattern="^[0-9]{10}$" formControlName="idStu"></ion-input> <!-- pattern เป็นตัวกำหนด Regex -->
+      </ion-item>
+      <ion-item *ngIf="idStuCtrl.hasError('required') && idStuCtrl.touched " > <!-- เช็ค If ว่าถ้า ตัวแปร idStuCtrl: AbstractControl นั้นมี Error required ไหม และ idStuCtrl ต้องถูกสัมผัส จะทำงาน  -->
+        <p style="color:red;">*กรุณาใส่รหัสนักศึกษา</p>
+      </ion-item>
+      <ion-item *ngIf="idStuCtrl.hasError('pattern') && idStuCtrl.touched " > <!-- เช็ค If ว่าถ้า idStuCtrl ไม่ถูกตามกฏ pattern และ idStuCtrl ถูกสัมผัส จะทำงาน -->
+        <p style="color:red;">*รหัสนักศึกษาเป็นตัวเลข 10 ตัว</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>ชื่อนักศึกษา</ion-label>
+        <ion-input type="text" pattern="^[A-Za-zก-๙]+$" formControlName="nameStu"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="nameStuCtrl.hasError('required') && nameStuCtrl.touched" >
+          <p style="color:red;">*กรุณาใส่ชื่อนักศึกษา</p>
+      </ion-item>
+      <ion-item *ngIf="nameStuCtrl.hasError('pattern') && nameStuCtrl.touched " > 
+        <p style="color:red;">*ชื่อนักศึกษาเป็นอักษรเท่านั้น</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="text" pattern="^[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" formControlName="emailStu"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="emailStuCtrl.hasError('required') && emailStuCtrl.touched" >
+          <p style="color:red;">*กรุณาใส่ E-mail</p>
+      </ion-item>
+      <ion-item *ngIf="emailStuCtrl.hasError('pattern') && emailStuCtrl.touched" >
+          <p style="color:red;">*ใส่ E-mail ให้ถูกต้อง</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>เบอร์โทรมือถือ</ion-label>
+        <ion-input type="number" pattern="^[0-9]{10}$" formControlName="telStu"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="telStuCtrl.hasError('required') && telStuCtrl.touched" >
+          <p style="color:red;">*กรุณาใส่เบอร์โทร</p>
+      </ion-item>
+      <ion-item *ngIf="telStuCtrl.hasError('pattern') && telStuCtrl.touched" >
+          <p style="color:red;">*ใส่เบอร์โทร 10 ตัว</p>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="usernameCtrl.hasError('required') && usernameCtrl.touched" >
+        <p style="color:red;">*กรุณาใส่ชื่อผู้ใช้</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="passwordCtrl.hasError('required') && passwordCtrl.touched" >
+        <p style="color:red;">*กรุณาใส่รหัสผ่าน</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password Confirm</ion-label>
+        <ion-input type="password" [(ngModel)]="passwordCon" formControlName="passwordConfirm"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="passwordCon!=password && passwordConfirmCtrl.touched" >
+        <p style="color:red;">*รหัสผ่านไม่ตรงกัน</p>
+      </ion-item>
+      <ion-item *ngIf="passwordConfirmCtrl.hasError('required') && passwordConfirmCtrl.touched" >
+        <p style="color:red;">*กรุณาใส่รหัสผ่านยืนยันอีกครั้ง</p>
+      </ion-item>
+
+    </ion-list>
+
+    <div>
+      <button type="submit" [disabled]="!formRegister.valid" block ion-button color="secondary"> <!-- ปุ่มจะไม่ทำงานจนกว่าค่า valid จะเป็น ture -->
+        สมัครสมาชิก
+      </button>
+    </div>
+
+  </form>
+
+</ion-content>

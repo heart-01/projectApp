@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { AddPage } from './../pages/add/add';
 import { SearchPage } from './../pages/search/search';
 import { ListPage } from './../pages/list/list';
+import { RegisterPage } from './../pages/register/register';
+import { LoginPage } from './../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,7 +24,9 @@ import { Toast } from '@ionic-native/toast'; // import alert toast
     TabsPage,
     ListPage,
     SearchPage,
-    AddPage
+    AddPage,
+    RegisterPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { Toast } from '@ionic-native/toast'; // import alert toast
     TabsPage,
     ListPage,
     SearchPage,
-    AddPage
+    AddPage,
+    RegisterPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
