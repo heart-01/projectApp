@@ -53,17 +53,24 @@ export class RegisterPage {
   addData(){
     console.log(this.formRegister.value);
     this.student  = this.formRegister.value;
-    let url= "http://localhost:8080/AddCustomer";  //กำหนด url ที่ใช้ api
+    let url= "http://localhost:8080/addStudent";  //กำหนด url ที่ใช้ api
     this.http.post(url,this.student) //เรียกใช้ http api post ที่ url ตัวที่ 2 เป็น body เป็น ข้อมูลที่ต้องการประมวลผล
       .subscribe( //subscribe เมื่อประมวลผล api เสร็จแล้วทำงาน
         res=>{ //ให้ทำงานอะไรใส่เครื่องหมายของฟังชั่นเข้าไป res คือ api คืนค่าอะไรมาเราจะได้มาเช็คว่าถูกต้องหรือไม่
           this.data = res; //กำหนดให้ตัวแปรให้ data เก็บข้อมูลของ res
 
-          if(this.data.msg==true){ //เช็คข้อมูลว่า msg ที่ api ส่งเข้ามาให้เป็นข้อมูลอะไร ในที่นี้ได้กำหนดว่า true
-            this.showAlert("Success","Data added"); //แสดง alert
+          if(this.data=="repeat idStu"){
+            this.showAlert("ไม่สามารถเพิ่มข้อมูลได้","รหัสนักศึกษานี้มีอยู่แล้ว"); //แสดง alert
+            return false;
+          }else if(this.data=="repeat username"){
+            this.showAlert("ไม่สามารถเพิ่มข้อมูลได้","Username นี้มีอยู่แล้ว"); //แสดง alert
+            return false;
+          }else if(this.data.msg==true){ //เช็คข้อมูลว่า msg ที่ api ส่งเข้ามาให้เป็นข้อมูลอะไร ในที่นี้ได้กำหนดว่า true
+            this.showAlert("สำเร็จ","เพิ่มข้อมูลสมาชิกแล้ว"); //แสดง alert
             this.navCtrl.popToRoot();
           }else{ //ถ้า เพิ่มข้อมูลไม่ได้
-            this.showAlert("Faill","Data Faill"); //แสดง alert
+            this.showAlert("ไม่สามารถเพิ่มข้อมูลได้","Error SQL ADD"); //แสดง alert
+            return false;
           }
 
         }
@@ -74,7 +81,7 @@ export class RegisterPage {
     const alert = this.alertCtrl.create({ //ได้กำหนดค่า alert ขึ้นมา 1 ตัว
       title: msgTitle, //กำหนด title บนหัวให้เป็นข้อมูล msgTitle
       subTitle: message, //กำหนด subTitle ข้อมูลใน title
-      buttons: ["OK"]  // ปุ่มใน alert
+      buttons: ["ตกลง"]  // ปุ่มใน alert
     });
     alert.present(); //แสดง alert
   }

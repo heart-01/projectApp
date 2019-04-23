@@ -22,7 +22,7 @@
 
       <ion-item>
         <ion-label floating>ชื่อนักศึกษา</ion-label>
-        <ion-input type="text" pattern="^[A-Za-zก-๙]+$" formControlName="nameStu"></ion-input>
+        <ion-input type="text" pattern="^[A-Za-zก-๙\ s]+$" formControlName="nameStu"></ion-input>
       </ion-item>
       <ion-item *ngIf="nameStuCtrl.hasError('required') && nameStuCtrl.touched" >
           <p style="color:red;">*กรุณาใส่ชื่อนักศึกษา</p>
@@ -52,7 +52,6 @@
       <ion-item *ngIf="telStuCtrl.hasError('pattern') && telStuCtrl.touched" >
           <p style="color:red;">*ใส่เบอร์โทร 10 ตัว</p>
       </ion-item>
-
 
       <ion-item>
         <ion-label floating>Username</ion-label>

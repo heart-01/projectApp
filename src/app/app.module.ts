@@ -33,7 +33,7 @@ import { Toast } from '@ionic-native/toast'; // import alert toast
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
-    IonicStorageModule
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

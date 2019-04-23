@@ -5,12 +5,15 @@
       <button ion-button icon-only (click)="addData()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
+      <button ion-button icon-only *ngIf="idStu!=''" (click)="logout()">
+        <ion-icon name="md-exit"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+{{idStu}}<br>{{idStatus}}<br>{{nameStu}}
   <h3>รายชื่อห้อง</h3>
   <ion-list>
     <ion-item-sliding *ngFor="let room of dataRoom; let i=index">
