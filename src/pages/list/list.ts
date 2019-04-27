@@ -1,3 +1,4 @@
+import { LogoutComponent } from './../../components/logout/logout';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -6,6 +7,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AlertController } from 'ionic-angular'; //popup message ธรมดา ต้องกด ok ถึงจะหาย
 import { Storage } from '@ionic/storage';
+
+
 
 @IonicPage()
 @Component({

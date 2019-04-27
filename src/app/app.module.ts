@@ -17,6 +17,7 @@ import { HttpModule } from '@angular/http'; // เรียกใช้ HttpModu
 import { HttpClientModule } from '@angular/common/http'; // import เพื่อใช้งาน Http บนเครื่อง Client
 import { IonicStorageModule } from '@ionic/storage'; // import local storage
 import { Toast } from '@ionic-native/toast'; // import alert toast
+import { LogoutComponent } from './../components/logout/logout'; //share page
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { Toast } from '@ionic-native/toast'; // import alert toast
     SearchPage,
     AddPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { Toast } from '@ionic-native/toast'; // import alert toast
     SearchPage,
     AddPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    LogoutComponent
   ],
   providers: [
     StatusBar,
